@@ -7,7 +7,6 @@ import * as Meta from "../components/Meta.mjs";
 import * as Next from "../bindings/Next.mjs";
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as Footer from "../components/Footer.mjs";
 import * as Belt_List from "rescript/lib/es6/belt_List.js";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as ColorTheme from "../common/ColorTheme.mjs";
@@ -318,7 +317,7 @@ function SidebarLayout(Props) {
                                     }, React.createElement(Mdx.Provider.make, {
                                           components: components,
                                           children: children
-                                        })), pagination)))), React.createElement(Footer.make, {})));
+                                        })), pagination))))));
 }
 
 var Toc = {};

@@ -333,7 +333,6 @@ let make = (
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   </>
 }

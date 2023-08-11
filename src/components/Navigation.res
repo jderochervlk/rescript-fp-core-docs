@@ -423,26 +423,26 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
   let route = router.route
 
   let (collapsibles, setCollapsibles) = React.useState(_ => [
-    {
-      title: "Docs",
-      href: "/docs/manual/latest/api",
-      isActiveRoute: route => {
-        let url = Url.parse(route)
-        switch url {
-        | {base: ["docs"]}
-        | {base: ["docs", "react"]}
-        | {base: ["docs", "gentype"]}
-        | {base: ["docs", "manual"]} =>
-          switch Belt.Array.get(url.pagepath, 0) {
-          | Some("api") => false
-          | _ => true
-          }
-        | _ => false
-        }
-      },
-      state: Closed,
-      children: <DocsSection />,
-    },
+    // {
+    //   title: "Docs",
+    //   href: "/docs/manual/latest/api",
+    //   isActiveRoute: route => {
+    //     let url = Url.parse(route)
+    //     switch url {
+    //     | {base: ["docs"]}
+    //     | {base: ["docs", "react"]}
+    //     | {base: ["docs", "gentype"]}
+    //     | {base: ["docs", "manual"]} =>
+    //       switch Belt.Array.get(url.pagepath, 0) {
+    //       | Some("api") => false
+    //       | _ => true
+    //       }
+    //     | _ => false
+    //     }
+    //   },
+    //   state: Closed,
+    //   children: <DocsSection />,
+    // },
   ])
 
   let isSubnavOpen = Js.Array2.find(collapsibles, c => c.state !== Closed) !== None
@@ -539,9 +539,9 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
             className="flex ml-10 space-x-5 w-full max-w-320"
             style={ReactDOMStyle.make(~maxWidth="26rem", ())}>
             {collapsibleElements->React.array}
-            // <Link href="/docs/manual/latest/api">
-            //   <a className={linkOrActiveApiSubroute(~route)}> {React.string("API")} </a>
-            // </Link>
+            <Link href="/docs">
+              <a className={linkOrActiveApiSubroute(~route)}> {React.string("Docs")} </a>
+            </Link>
           </div>
           <div className="hidden md:flex items-center">
             <div className="hidden sm:block mr-6">

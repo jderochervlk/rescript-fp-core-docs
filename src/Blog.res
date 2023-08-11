@@ -318,7 +318,6 @@ let default = (props: props): React.element => {
             </Mdx.Provider>
           </main>
         </div>
-        <Footer />
       </div>
     </div>
   </>

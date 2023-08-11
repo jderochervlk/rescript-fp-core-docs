@@ -497,7 +497,6 @@ let default = (props: props) => {
             </Mdx.Provider>
           </div>
         </div>
-        <Footer />
       </div>
     </div>
   </>

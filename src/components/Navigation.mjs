@@ -3,11 +3,9 @@
 import * as Url from "../common/Url.mjs";
 import * as Icon from "./Icon.mjs";
 import * as Next from "../bindings/Next.mjs";
-import * as Util from "../common/Util.mjs";
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Hooks from "../common/Hooks.mjs";
 import * as React from "react";
-import * as Constants from "../common/Constants.mjs";
 import * as DocSearch from "./DocSearch.mjs";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
@@ -28,6 +26,16 @@ function linkOrActiveLink(target, route) {
 
 function linkOrActiveLinkSubroute(target, route) {
   if (route.startsWith(target)) {
+    return activeLink;
+  } else {
+    return link;
+  }
+}
+
+function linkOrActiveApiSubroute(route) {
+  var url = Url.parse(route);
+  var match = Belt_Array.get(url.pagepath, 0);
+  if (match === "api") {
     return activeLink;
   } else {
     return link;
@@ -84,283 +92,6 @@ function Navigation$CollapsibleLink(Props) {
                         }, children))));
 }
 
-function Navigation$DocsSection$LinkCard(Props) {
-  var icon = Props.icon;
-  var title = Props.title;
-  var description = Props.description;
-  var href = Props.href;
-  var activeOpt = Props.active;
-  var active = activeOpt !== undefined ? activeOpt : false;
-  var isAbsolute = Util.Url.isAbsolute(href);
-  var content = React.createElement("div", {
-        className: "hover:bg-gray-5 hover:shadow hover:-mx-8 hover:px-8 hover:cursor-pointer active:bg-gray-20 py-4 flex space-x-4 items-start rounded-xl"
-      }, icon, React.createElement("div", undefined, React.createElement("div", {
-                className: "flex items-center text-16 font-medium " + (
-                  active ? "text-fire" : "text-gray-80"
-                ) + ""
-              }, React.createElement("span", undefined, title), isAbsolute ? React.createElement(Icon.ExternalLink.make, {
-                      className: "inline-block ml-2 w-4 h-4"
-                    }) : null), React.createElement("div", {
-                className: "block text-14 text-gray-60 " + (
-                  active ? "text-fire-50" : "text-gray-60"
-                ) + ""
-              }, description)));
-  if (isAbsolute) {
-    return React.createElement("a", {
-                className: "",
-                href: href,
-                rel: "noopener noreferrer"
-              }, content);
-  } else {
-    return React.createElement(Next.Link.make, {
-                href: href,
-                children: React.createElement("a", {
-                      className: ""
-                    }, content)
-              });
-  }
-}
-
-function Navigation$DocsSection(Props) {
-  var router = Next.Router.useRouter(undefined);
-  var url = Url.parse(router.route);
-  var match = React.useState(function () {
-        var version = url.version;
-        if (typeof version === "number") {
-          return "latest";
-        } else {
-          return version._0;
-        }
-      });
-  var setVersion = match[1];
-  var version = match[0];
-  var languageManual = Constants.languageManual(version);
-  var documentation = [
-    {
-      imgSrc: "/static/ic_manual@2x.png",
-      title: "Language Manual",
-      description: "Reference for all language features",
-      href: "/docs/manual/" + version + "/introduction",
-      isActive: (function (url) {
-          var match = url.base;
-          if (match.length !== 2) {
-            return false;
-          }
-          var match$1 = match[0];
-          if (match$1 !== "docs") {
-            return false;
-          }
-          var match$2 = match[1];
-          if (match$2 === "manual") {
-            return true;
-          } else {
-            return false;
-          }
-        })
-    },
-    {
-      imgSrc: "/static/ic_rescript_react@2x.png",
-      title: "ReScript & React",
-      description: "First class bindings for ReactJS",
-      href: "/docs/react/latest/introduction",
-      isActive: (function (url) {
-          var match = url.base;
-          if (match.length !== 2) {
-            return false;
-          }
-          var match$1 = match[0];
-          if (match$1 !== "docs") {
-            return false;
-          }
-          var match$2 = match[1];
-          if (match$2 === "react") {
-            return true;
-          } else {
-            return false;
-          }
-        })
-    },
-    {
-      imgSrc: "/static/ic_gentype@2x.png",
-      title: "GenType",
-      description: "Seamless TypeScript & Flow integration",
-      href: "/docs/gentype/latest/introduction",
-      isActive: (function (url) {
-          var match = url.base;
-          if (match.length !== 2) {
-            return false;
-          }
-          var match$1 = match[0];
-          if (match$1 !== "docs") {
-            return false;
-          }
-          var match$2 = match[1];
-          if (match$2 === "gentype") {
-            return true;
-          } else {
-            return false;
-          }
-        })
-    },
-    {
-      imgSrc: "/static/ic_reanalyze@2x.png",
-      title: "Reanalyze",
-      description: "Dead Code & Termination analysis",
-      href: "https://github.com/reason-association/reanalyze",
-      isActive: (function (param) {
-          return false;
-        })
-    }
-  ];
-  var languageManualColumn = React.createElement("div", {
-        className: "flex px-4 sm:justify-center border-r border-gray-10 pt-8 pb-10"
-      }, React.createElement("div", undefined, React.createElement("div", {
-                className: "text-12 font-medium text-gray-100 tracking-wide uppercase subpixel-antialiased"
-              }, "Quick Links"), React.createElement("div", undefined, React.createElement("ul", {
-                    className: "space-y-2 ml-2 mt-6"
-                  }, languageManual.map(function (item) {
-                        var href = item[1];
-                        var text = item[0];
-                        var linkClass = router.route === href ? "text-fire-50" : "hover:text-fire-50";
-                        return React.createElement("li", {
-                                    key: text
-                                  }, React.createElement("span", {
-                                        className: "text-fire mr-2"
-                                      }, "-"), React.createElement(Next.Link.make, {
-                                        href: href,
-                                        children: React.createElement("a", {
-                                              className: linkClass
-                                            }, text)
-                                      }));
-                      })))));
-  var ecosystemColumn = React.createElement("div", {
-        className: "flex px-4 sm:h-full sm:justify-center border-r border-gray-10 pt-8"
-      }, React.createElement("div", {
-            className: "w-full pb-16",
-            style: {
-              maxWidth: "19.625rem"
-            }
-          }, React.createElement("div", {
-                className: "text-12 font-medium text-gray-100 tracking-wide uppercase subpixel-antialiased"
-              }, "Documentation"), React.createElement("div", undefined, React.createElement("div", {
-                    className: "mt-6"
-                  }, documentation.map(function (item) {
-                        var title = item.title;
-                        var icon = React.createElement("img", {
-                              style: {
-                                width: "2.1875rem"
-                              },
-                              src: item.imgSrc
-                            });
-                        return React.createElement(Navigation$DocsSection$LinkCard, {
-                                    icon: icon,
-                                    title: title,
-                                    description: item.description,
-                                    href: item.href,
-                                    active: Curry._1(item.isActive, url),
-                                    key: title
-                                  });
-                      })))));
-  var icon = React.createElement("div", {
-        className: "w-6 h-6"
-      }, React.createElement("img", {
-            className: "w-full",
-            src: "/static/ic_package.svg"
-          }));
-  var match$1 = url.base;
-  var active;
-  if (match$1.length !== 1) {
-    active = false;
-  } else {
-    var match$2 = match$1[0];
-    active = match$2 === "packages" ? true : false;
-  }
-  var packageLink = React.createElement(Navigation$DocsSection$LinkCard, {
-        icon: icon,
-        title: "Packages",
-        description: "Explore third party libraries and bindings",
-        href: "/packages",
-        active: active
-      });
-  var match$3 = url.base;
-  var active$1;
-  if (match$3.length !== 1) {
-    active$1 = false;
-  } else {
-    var match$4 = match$3[0];
-    active$1 = match$4 === "syntax-lookup" ? true : false;
-  }
-  var icon$1 = React.createElement("div", {
-        className: "-mr-2 flex w-6 h-6 justify-center items-center"
-      }, React.createElement("img", {
-            className: "w-4 h-4",
-            src: "/static/ic_search.svg"
-          }));
-  var syntaxLookupLink = React.createElement(Navigation$DocsSection$LinkCard, {
-        icon: icon$1,
-        title: "Syntax Lookup",
-        description: "Discover all syntax constructs",
-        href: "/syntax-lookup",
-        active: active$1
-      });
-  var quickReferenceColumn = React.createElement("div", {
-        className: "flex px-4 sm:h-full sm:justify-center pb-12 pt-8 pb-10"
-      }, React.createElement("div", {
-            className: "w-full",
-            style: {
-              maxWidth: "19.625rem"
-            }
-          }, React.createElement("div", {
-                className: "text-12 font-medium text-gray-100 tracking-wide uppercase subpixel-antialiased"
-              }, "Exploration"), React.createElement("div", {
-                className: "mt-6"
-              }, React.createElement(React.Fragment, undefined, packageLink, syntaxLookupLink))));
-  var onVersionChange = function (evt) {
-    evt.preventDefault();
-    var version = evt.target.value;
-    var match = url.base;
-    if (match.length === 2) {
-      var match$1 = match[0];
-      if (match$1 === "docs") {
-        var match$2 = match[1];
-        if (match$2 === "manual") {
-          var targetUrl = "/" + (url.base.join("/") + ("/" + (version + ("/" + url.pagepath.join("/")))));
-          Next.Router.push(router, targetUrl);
-        }
-        
-      }
-      
-    }
-    Curry._1(setVersion, (function (param) {
-            return version;
-          }));
-  };
-  var tmp = version === "latest" ? React.createElement("span", {
-          className: "text-gray-40 text-12"
-        }, "This is the latest docs version") : null;
-  return React.createElement("div", {
-              className: "relative w-full bg-white pb-32 min-h-full sm:pb-0 text-gray-60 text-14 rounded-bl-xl rounded-br-xl"
-            }, React.createElement("div", {
-                  className: "flex justify-center w-full py-2 border-b border-gray-10"
-                }, React.createElement("div", {
-                      className: "px-4 w-full space-x-2 max-w-1280 "
-                    }, React.createElement(VersionSelect.make, {
-                          onChange: onVersionChange,
-                          version: version,
-                          availableVersions: Constants.allManualVersions
-                        }), tmp)), React.createElement("div", {
-                  className: "flex justify-center"
-                }, React.createElement("div", {
-                      className: "w-full sm:grid sm:grid-cols-3 max-w-1280"
-                    }, languageManualColumn, ecosystemColumn, quickReferenceColumn)), React.createElement("img", {
-                  className: "hidden xl:block absolute bottom-0 right-0",
-                  style: {
-                    maxWidth: "27.8rem"
-                  },
-                  src: "/static/illu_index_rescript@2x.png"
-                }));
-}
-
 function Navigation$MobileNav(Props) {
   var route = Props.route;
   var base = "font-normal mx-4 py-5 text-gray-20 border-b border-gray-80";
@@ -408,52 +139,7 @@ function Navigation(Props) {
   var router = Next.Router.useRouter(undefined);
   var route = router.route;
   var match = React.useState(function () {
-        return [{
-                  title: "Docs",
-                  children: React.createElement(Navigation$DocsSection, {}),
-                  isActiveRoute: (function (route) {
-                      var url = Url.parse(route);
-                      var match = url.base;
-                      var len = match.length;
-                      if (len >= 3) {
-                        return false;
-                      }
-                      switch (len) {
-                        case 0 :
-                            return false;
-                        case 1 :
-                            var match$1 = match[0];
-                            if (match$1 !== "docs") {
-                              return false;
-                            }
-                            break;
-                        case 2 :
-                            var match$2 = match[0];
-                            if (match$2 !== "docs") {
-                              return false;
-                            }
-                            var match$3 = match[1];
-                            switch (match$3) {
-                              case "gentype" :
-                              case "manual" :
-                              case "react" :
-                                  break;
-                              default:
-                                return false;
-                            }
-                            break;
-                        
-                      }
-                      var match$4 = Belt_Array.get(url.pagepath, 0);
-                      if (match$4 === "api") {
-                        return false;
-                      } else {
-                        return true;
-                      }
-                    }),
-                  href: "/docs/manual/latest/api",
-                  state: /* Closed */2
-                }];
+        return [];
       });
   var setCollapsibles = match[1];
   var collapsibles = match[0];
@@ -560,7 +246,12 @@ function Navigation(Props) {
                               style: {
                                 maxWidth: "26rem"
                               }
-                            }, collapsibleElements), React.createElement("div", {
+                            }, collapsibleElements, React.createElement(Next.Link.make, {
+                                  href: "/docs",
+                                  children: React.createElement("a", {
+                                        className: linkOrActiveApiSubroute(route)
+                                      }, "Docs")
+                                })), React.createElement("div", {
                               className: "hidden md:flex items-center"
                             }, React.createElement("div", {
                                   className: "hidden sm:block mr-6"
