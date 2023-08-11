@@ -16,9 +16,7 @@ let linkOrActiveApiSubroute = (~route) => {
   }
 }
 
-let githubHref = "https://github.com/reason-association/rescript-lang.org#rescript-langorg"
-//let twitterHref = "https://twitter.com/rescriptlang"
-let discourseHref = "https://forum.rescript-lang.org"
+let githubHref = "https://github.com/jderochervlk/rescript-fp-core"
 
 module CollapsibleLink = {
   // KeepOpen = Menu has been opened and should stay open
@@ -412,11 +410,6 @@ module MobileNav = {
             {React.string("GitHub")}
           </a>
         </li>
-        <li className=base>
-          <a href=discourseHref rel="noopener noreferrer" className=extLink>
-            {React.string("Forum")}
-          </a>
-        </li>
       </ul>
     </div>
   }
@@ -546,25 +539,9 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
             className="flex ml-10 space-x-5 w-full max-w-320"
             style={ReactDOMStyle.make(~maxWidth="26rem", ())}>
             {collapsibleElements->React.array}
-            <Link href="/docs/manual/latest/api">
-              <a className={linkOrActiveApiSubroute(~route)}> {React.string("API")} </a>
-            </Link>
-            <Link href="/try">
-              <a className={"hidden xs:block " ++ linkOrActiveLink(~target="/try", ~route)}>
-                {React.string("Playground")}
-              </a>
-            </Link>
-            <Link href="/blog">
-              <a
-                className={"hidden xs:block " ++ linkOrActiveLinkSubroute(~target="/blog", ~route)}>
-                {React.string("Blog")}
-              </a>
-            </Link>
-            <Link href="/community">
-              <a className={"hidden xs:block " ++ linkOrActiveLink(~target="/community", ~route)}>
-                {React.string("Community")}
-              </a>
-            </Link>
+            // <Link href="/docs/manual/latest/api">
+            //   <a className={linkOrActiveApiSubroute(~route)}> {React.string("API")} </a>
+            // </Link>
           </div>
           <div className="hidden md:flex items-center">
             <div className="hidden sm:block mr-6">
@@ -572,15 +549,6 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
             </div>
             <a href=githubHref rel="noopener noreferrer" className={"mr-5 " ++ link}>
               <Icon.GitHub className="w-6 h-6 opacity-50 hover:opacity-100" />
-            </a>
-            <a
-              href="https://twitter.com/rescriptlang"
-              rel="noopener noreferrer"
-              className={"mr-5 " ++ link}>
-              <Icon.Twitter className="w-6 h-6 opacity-50 hover:opacity-100" />
-            </a>
-            <a href=discourseHref rel="noopener noreferrer" className=link>
-              <Icon.Discourse className="w-6 h-6 opacity-50 hover:opacity-100" />
             </a>
           </div>
         </div>

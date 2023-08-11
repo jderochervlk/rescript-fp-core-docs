@@ -34,19 +34,7 @@ function linkOrActiveLinkSubroute(target, route) {
   }
 }
 
-function linkOrActiveApiSubroute(route) {
-  var url = Url.parse(route);
-  var match = Belt_Array.get(url.pagepath, 0);
-  if (match === "api") {
-    return activeLink;
-  } else {
-    return link;
-  }
-}
-
-var githubHref = "https://github.com/reason-association/rescript-lang.org#rescript-langorg";
-
-var discourseHref = "https://forum.rescript-lang.org";
+var githubHref = "https://github.com/jderochervlk/rescript-fp-core";
 
 function Navigation$CollapsibleLink(Props) {
   var title = Props.title;
@@ -409,13 +397,7 @@ function Navigation$MobileNav(Props) {
                           className: extLink,
                           href: githubHref,
                           rel: "noopener noreferrer"
-                        }, "GitHub")), React.createElement("li", {
-                      className: base
-                    }, React.createElement("a", {
-                          className: extLink,
-                          href: discourseHref,
-                          rel: "noopener noreferrer"
-                        }, "Forum"))));
+                        }, "GitHub"))));
 }
 
 function Navigation(Props) {
@@ -578,27 +560,7 @@ function Navigation(Props) {
                               style: {
                                 maxWidth: "26rem"
                               }
-                            }, collapsibleElements, React.createElement(Next.Link.make, {
-                                  href: "/docs/manual/latest/api",
-                                  children: React.createElement("a", {
-                                        className: linkOrActiveApiSubroute(route)
-                                      }, "API")
-                                }), React.createElement(Next.Link.make, {
-                                  href: "/try",
-                                  children: React.createElement("a", {
-                                        className: "hidden xs:block " + linkOrActiveLink("/try", route)
-                                      }, "Playground")
-                                }), React.createElement(Next.Link.make, {
-                                  href: "/blog",
-                                  children: React.createElement("a", {
-                                        className: "hidden xs:block " + linkOrActiveLinkSubroute("/blog", route)
-                                      }, "Blog")
-                                }), React.createElement(Next.Link.make, {
-                                  href: "/community",
-                                  children: React.createElement("a", {
-                                        className: "hidden xs:block " + linkOrActiveLink("/community", route)
-                                      }, "Community")
-                                })), React.createElement("div", {
+                            }, collapsibleElements), React.createElement("div", {
                               className: "hidden md:flex items-center"
                             }, React.createElement("div", {
                                   className: "hidden sm:block mr-6"
@@ -607,18 +569,6 @@ function Navigation(Props) {
                                   href: githubHref,
                                   rel: "noopener noreferrer"
                                 }, React.createElement(Icon.GitHub.make, {
-                                      className: "w-6 h-6 opacity-50 hover:opacity-100"
-                                    })), React.createElement("a", {
-                                  className: "mr-5 " + link,
-                                  href: "https://twitter.com/rescriptlang",
-                                  rel: "noopener noreferrer"
-                                }, React.createElement(Icon.Twitter.make, {
-                                      className: "w-6 h-6 opacity-50 hover:opacity-100"
-                                    })), React.createElement("a", {
-                                  className: link,
-                                  href: discourseHref,
-                                  rel: "noopener noreferrer"
-                                }, React.createElement(Icon.Discourse.make, {
                                       className: "w-6 h-6 opacity-50 hover:opacity-100"
                                     }))))), React.createElement("button", {
                       className: "h-full px-4 xs:hidden flex items-center hover:text-white",
