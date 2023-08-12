@@ -14,9 +14,15 @@ function Meta(Props) {
   var ogDescriptionOpt = Props.ogDescription;
   var ogTitle = Props.ogTitle;
   var ogImage = Props.ogImage;
-  var siteName = siteNameOpt !== undefined ? siteNameOpt : "ReScript Documentation";
-  var keywords = keywordsOpt !== undefined ? keywordsOpt : [];
-  var description = descriptionOpt !== undefined ? descriptionOpt : "The ReScript language and ecosystem docs";
+  var siteName = siteNameOpt !== undefined ? siteNameOpt : "rescript-fp-ts";
+  var keywords = keywordsOpt !== undefined ? keywordsOpt : [
+      "rescript",
+      "fuctional programming",
+      "core",
+      "standard",
+      "library"
+    ];
+  var description = descriptionOpt !== undefined ? descriptionOpt : "A functional standard library for ReScript.";
   var ogLocale = ogLocaleOpt !== undefined ? ogLocaleOpt : "en_US";
   var ogDescription = ogDescriptionOpt !== undefined ? ogDescriptionOpt : description;
   var title$1 = title !== undefined && title !== "" ? title : siteName;

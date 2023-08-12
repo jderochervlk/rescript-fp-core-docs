@@ -5,9 +5,9 @@ module Head = Next.Head
  */
 @react.component
 let make = (
-  ~siteName="ReScript Documentation",
-  ~keywords: array<string>=[],
-  ~description="The ReScript language and ecosystem docs",
+  ~siteName="rescript-fp-ts",
+  ~keywords: array<string>=["rescript", "fuctional programming", "core", "standard", "library"],
+  ~description="A functional standard library for ReScript.",
   ~canonical=?,
   ~title=?,
   ~ogLocale="en_US",
