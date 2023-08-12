@@ -26,19 +26,9 @@ let default = (~showVersionSelect=true) => {
   | Version(version) => version
   }
 
-  let languageManual = [
-    ("Overview", j` /docs/manual/$version/introduction`),
-    ("Language Features", j`/docs/manual/$version/overview`),
-    ("JS Interop", j`/docs/manual/$version/embed-raw-javascript`),
-    ("Build System", j`/docs/manual/$version/build-overview`),
-  ]
+  let languageManual = []
 
-  let ecosystem = [
-    ("Package Index", "/packages"),
-    ("rescript-react", "/docs/react/latest/introduction"),
-    ("GenType", "/docs/gentype/latest/introduction"),
-    ("Reanalyze", "https://github.com/reason-association/reanalyze"),
-  ]
+  let ecosystem = []
 
   let tools = [("Syntax Lookup", "/syntax-lookup")]
 

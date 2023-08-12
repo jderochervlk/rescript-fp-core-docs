@@ -4,17 +4,6 @@ type version =
   | Version(string)
 
 /*
-  Example 1:
-  Url: "/docs/manual/latest/advanced/introduction"
-
-  Results in:
-  fullpath: ["docs", "manual", "latest", "advanced", "introduction"]
-  base: ["docs", "manual"]
-  version: Latest
-  pagepath: ["advanced", "introduction"]
- */
-
-/*
   Example 2:
   Url: "/apis/"
 

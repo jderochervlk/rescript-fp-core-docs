@@ -28,44 +28,11 @@ var allReactVersions = [
 ];
 
 function languageManual(version) {
-  return [
-          [
+  return [[
             "Overview",
-            "/docs/manual/" + version + "/introduction"
-          ],
-          [
-            "Language Features",
-            "/docs/manual/" + version + "/overview"
-          ],
-          [
-            "JS Interop",
-            "/docs/manual/" + version + "/embed-raw-javascript"
-          ],
-          [
-            "Build System",
-            "/docs/manual/" + version + "/build-overview"
-          ]
-        ];
+            "/docs"
+          ]];
 }
-
-var ecosystem = [
-  [
-    "Package Index",
-    "/packages"
-  ],
-  [
-    "rescript-react",
-    "/docs/react/latest/introduction"
-  ],
-  [
-    "GenType",
-    "/docs/gentype/latest/introduction"
-  ],
-  [
-    "Reanalyze",
-    "https://github.com/reason-association/reanalyze"
-  ]
-];
 
 var tools = [[
     "Syntax Lookup",
@@ -76,7 +43,6 @@ export {
   allManualVersions ,
   allReactVersions ,
   languageManual ,
-  ecosystem ,
   tools ,
 }
 /* No side effect */

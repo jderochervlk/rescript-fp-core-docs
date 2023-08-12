@@ -38,42 +38,8 @@ function DocsOverview$default(Props) {
   var url = Url.parse(router.route);
   var version = url.version;
   var version$1 = typeof version === "number" ? "latest" : version._0;
-  var languageManual = [
-    [
-      "Overview",
-      " /docs/manual/" + version$1 + "/introduction"
-    ],
-    [
-      "Language Features",
-      "/docs/manual/" + version$1 + "/overview"
-    ],
-    [
-      "JS Interop",
-      "/docs/manual/" + version$1 + "/embed-raw-javascript"
-    ],
-    [
-      "Build System",
-      "/docs/manual/" + version$1 + "/build-overview"
-    ]
-  ];
-  var ecosystem = [
-    [
-      "Package Index",
-      "/packages"
-    ],
-    [
-      "rescript-react",
-      "/docs/react/latest/introduction"
-    ],
-    [
-      "GenType",
-      "/docs/gentype/latest/introduction"
-    ],
-    [
-      "Reanalyze",
-      "https://github.com/reason-association/reanalyze"
-    ]
-  ];
+  var languageManual = [];
+  var ecosystem = [];
   var tools = [[
       "Syntax Lookup",
       "/syntax-lookup"
