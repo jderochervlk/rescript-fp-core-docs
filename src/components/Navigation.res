@@ -544,9 +544,10 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
             </Link>
           </div>
           <div className="hidden md:flex items-center">
-            <div className="hidden sm:block mr-6">
-              <DocSearch />
-            </div>
+            // TODO: get search working
+            // <div className="hidden sm:block mr-6">
+            //   <DocSearch />
+            // </div>
             <a href=githubHref rel="noopener noreferrer" className={"mr-5 " ++ link}>
               <Icon.GitHub className="w-6 h-6 opacity-50 hover:opacity-100" />
             </a>

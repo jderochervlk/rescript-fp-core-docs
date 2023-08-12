@@ -15,7 +15,6 @@ import { URL } from 'url';
 const pathname = new URL('.', import.meta.url).pathname;
 const __dirname = process.platform !== 'win32' ? pathname : pathname.substring(1)
 
-// orderArr: ["introduction", "overview",,...]
 const orderFiles = (filepaths, orderArr) => {
   const order = orderArr.reduce((acc, next, i) => {
     acc[next] = null;
@@ -133,7 +132,7 @@ const createTOC = result => {
 };
 
 const createLatestManualToc = () => {
-  const MD_DIR = path.join(__dirname, "../pages/docs/manual/latest");
+  const MD_DIR = path.join(__dirname, "../pages/docs");
   const SIDEBAR_JSON = path.join(__dirname, "../data/sidebar_manual_latest.json");
   const TARGET_FILE = path.join(__dirname, "../index_data/manual_latest_toc.json");
 
@@ -152,140 +151,5 @@ const createLatestManualToc = () => {
   fs.writeFileSync(TARGET_FILE, JSON.stringify(toc), "utf8");
 };
 
-const createReasonCompilerToc = () => {
-  const MD_DIR = path.join(__dirname, "../pages/docs/reason-compiler/latest");
-  const TARGET_FILE = path.join(__dirname, "../index_data/reason_compiler_toc.json");
-
-  const files = glob.sync(`${MD_DIR}/*.md?(x)`);
-  const result = files.map(processFile);
-  const toc = createTOC(result);
-
-  fs.writeFileSync(TARGET_FILE, JSON.stringify(toc), "utf8");
-};
-
-const createV900ManualToc = () => {
-  const MD_DIR = path.join(__dirname, "../pages/docs/manual/v9.0.0");
-  const SIDEBAR_JSON = path.join(__dirname, "../data/sidebar_manual_v900.json");
-  const TARGET_FILE = path.join(__dirname, "../index_data/manual_v900_toc.json");
-
-  const sidebarJson = JSON.parse(fs.readFileSync(SIDEBAR_JSON));
-
-  const FILE_ORDER = Object.values(sidebarJson).reduce((acc, items) => {
-    return acc.concat(items)
-  },[]);
-
-  const files = glob.sync(`${MD_DIR}/*.?(js|md?(x))`);
-  const ordered = orderFiles(files, FILE_ORDER);
-
-  const result = ordered.map((filepath) => processFile(filepath, sidebarJson));
-  const toc = createTOC(result);
-
-  fs.writeFileSync(TARGET_FILE, JSON.stringify(toc), "utf8");
-};
-
-const createV800ManualToc = () => {
-  const MD_DIR = path.join(__dirname, "../pages/docs/manual/v8.0.0");
-  const SIDEBAR_JSON = path.join(__dirname, "../data/sidebar_manual_v800.json");
-  const TARGET_FILE = path.join(__dirname, "../index_data/manual_v800_toc.json");
-
-  const sidebarJson = JSON.parse(fs.readFileSync(SIDEBAR_JSON));
-
-  const FILE_ORDER = Object.values(sidebarJson).reduce((acc, items) => {
-    return acc.concat(items)
-  },[]);
-
-  const files = glob.sync(`${MD_DIR}/*.?(js|md?(x))`);
-  const ordered = orderFiles(files, FILE_ORDER);
-
-  const result = ordered.map((filepath) => processFile(filepath, sidebarJson));
-  const toc = createTOC(result);
-
-  fs.writeFileSync(TARGET_FILE, JSON.stringify(toc), "utf8");
-};
-
-
-const createReactToc = version => {
-  const versionLabel = version.replace(/\./g, "");
-  const MD_DIR = path.join(__dirname, "../pages/docs/react");
-  const SIDEBAR_JSON = path.join(__dirname, `../data/sidebar_react_${versionLabel}.json`);
-  const TARGET_FILE = path.join(__dirname, `../index_data/react_${versionLabel}_toc.json`);
-
-  const sidebarJson = JSON.parse(fs.readFileSync(SIDEBAR_JSON));
-
-  const FILE_ORDER = Object.values(sidebarJson).reduce((acc, items) => {
-    return acc.concat(items)
-  },[]);
-
-  const files = glob.sync(`${MD_DIR}/${version}/*.md?(x)`);
-  const ordered = orderFiles(files, FILE_ORDER);
-
-  const result = ordered.map((filepath) => processFile(filepath, sidebarJson));
-  const toc = createTOC(result);
-
-  fs.writeFileSync(TARGET_FILE, JSON.stringify(toc), "utf8");
-};
-
-const createGenTypeToc = () => {
-  const MD_DIR = path.join(__dirname, "../pages/docs/gentype/latest");
-  const SIDEBAR_JSON = path.join(__dirname, "../data/sidebar_gentype_latest.json");
-  const TARGET_FILE = path.join(__dirname, "../index_data/gentype_latest_toc.json");
-
-  const sidebarJson = JSON.parse(fs.readFileSync(SIDEBAR_JSON));
-
-  const FILE_ORDER = Object.values(sidebarJson).reduce((acc, items) => {
-    return acc.concat(items)
-  },[]);
-
-  const files = glob.sync(`${MD_DIR}/*.?(js|md?(x))`);
-  const ordered = orderFiles(files, FILE_ORDER);
-
-  const result = ordered.map((filepath) => processFile(filepath, sidebarJson));
-  const toc = createTOC(result);
-
-  fs.writeFileSync(TARGET_FILE, JSON.stringify(toc), "utf8");
-};
-
-const createCommunityToc = () => {
-  const MD_DIR = path.join(__dirname, "../pages/community");
-  const SIDEBAR_JSON = path.join(__dirname, "../data/sidebar_community.json");
-  const TARGET_FILE = path.join(__dirname, "../index_data/community_toc.json");
-
-  const sidebarJson = JSON.parse(fs.readFileSync(SIDEBAR_JSON));
-
-  const FILE_ORDER = Object.values(sidebarJson).reduce((acc, items) => {
-    return acc.concat(items)
-  },[]);
-
-  const files = glob.sync(`${MD_DIR}/*.?(js|md?(x))`);
-  const ordered = orderFiles(files, FILE_ORDER);
-
-  const result = ordered.map((filepath) => processFile(filepath, sidebarJson));
-  const toc = createTOC(result);
-
-  fs.writeFileSync(TARGET_FILE, JSON.stringify(toc), "utf8");
-};
-
-/*
-const debugToc = () => {
-  const MD_DIR = path.join(__dirname, "../pages/docs/manual/latest");
-
-  const files = glob.sync(`${MD_DIR}/introduction.md?(x)`);
-  const result = files.map(processFile);
-  const toc = createTOC(result);
-
-  console.log(JSON.stringify(toc, null, 2));
-
-};
-
-debugToc();
-*/
-
 // main
 createLatestManualToc();
-createV900ManualToc();
-createV800ManualToc();
-createReasonCompilerToc();
-createReactToc("latest");
-createReactToc("v0.10.0");
-createGenTypeToc();
-createCommunityToc();

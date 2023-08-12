@@ -273,9 +273,18 @@ function Make(Content) {
         };
 }
 
+var Sidebar;
+
+var NavItem;
+
+var Category;
+
 var make = DocsLayout;
 
 export {
+  Sidebar ,
+  NavItem ,
+  Category ,
   makeBreadcrumbs ,
   make ,
   Make ,

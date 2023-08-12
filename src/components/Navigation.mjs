@@ -253,9 +253,7 @@ function Navigation(Props) {
                                       }, "Docs")
                                 })), React.createElement("div", {
                               className: "hidden md:flex items-center"
-                            }, React.createElement("div", {
-                                  className: "hidden sm:block mr-6"
-                                }, React.createElement(DocSearch.make, {})), React.createElement("a", {
+                            }, React.createElement("a", {
                                   className: "mr-5 " + link,
                                   href: githubHref,
                                   rel: "noopener noreferrer"
