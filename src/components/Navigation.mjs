@@ -233,7 +233,7 @@ function Navigation(Props) {
                         top: "4rem"
                       }
                     }, React.createElement(Navigation$MobileNav, {
-                          route: route
+                          _route: route
                         }))), React.createElement("div", {
                   className: (
                     isSubnavOpen ? "fixed" : "hidden"

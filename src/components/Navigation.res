@@ -3,11 +3,6 @@ module Link = Next.Link
 let link = "no-underline block text-inherit hover:cursor-pointer hover:text-fire-30 text-gray-40 mb-px"
 let activeLink = "text-inherit font-medium text-fire-30 border-b border-fire"
 
-let linkOrActiveLink = (~target, ~route) => target === route ? activeLink : link
-
-let linkOrActiveLinkSubroute = (~target, ~route) =>
-  Js.String2.startsWith(route, target) ? activeLink : link
-
 let linkOrActiveApiSubroute = (~route) => {
   let url = Url.parse(route)
   switch Belt.Array.get(url.pagepath, 0) {
@@ -97,7 +92,7 @@ type collapsible = {
 
 module MobileNav = {
   @react.component
-  let make = (~route: string) => {
+  let make = (~_route: string) => {
     let base = "font-normal mx-4 py-5 text-gray-20 border-b border-gray-80"
     let extLink = "block hover:cursor-pointer hover:text-white text-gray-60"
     <div className="border-gray-80 border-t">
@@ -252,7 +247,7 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
         className={(
           isOverlayOpen && !isSubnavOpen ? "flex" : "hidden"
         ) ++ " sm:hidden flex-col fixed top-0 left-0 h-full w-full z-50 sm:w-9/12 bg-gray-100 sm:h-auto sm:flex sm:relative sm:flex-row sm:justify-between"}>
-        <MobileNav route />
+        <MobileNav _route={route} />
       </div>
     </nav>
     <div
