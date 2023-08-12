@@ -102,37 +102,9 @@ module MobileNav = {
     let extLink = "block hover:cursor-pointer hover:text-white text-gray-60"
     <div className="border-gray-80 border-t">
       <ul>
-        <li className=base>
-          <DocSearch.Textbox id="docsearch-mobile" />
-        </li>
-        <li className=base>
-          <Link href="/try">
-            <a className={linkOrActiveLink(~target="/try", ~route)}>
-              {React.string("Playground")}
-            </a>
-          </Link>
-        </li>
-        <li className=base>
-          <Link href="/blog">
-            <a className={linkOrActiveLinkSubroute(~target="/blog", ~route)}>
-              {React.string("Blog")}
-            </a>
-          </Link>
-        </li>
-        /*
-         <li className=base>
-           <Link href="/community">
-             <a className={linkOrActiveLink(~target="/community", ~route)}>
-               {React.string("Community")}
-             </a>
-           </Link>
-         </li>
- */
-        <li className=base>
-          <a href="https://twitter.com/rescriptlang" rel="noopener noreferrer" className=extLink>
-            {React.string("Twitter")}
-          </a>
-        </li>
+        // <li className=base>
+        //   <DocSearch.Textbox id="docsearch-mobile" />
+        // </li>
         <li className=base>
           <a href=githubHref rel="noopener noreferrer" className=extLink>
             {React.string("GitHub")}
@@ -150,28 +122,7 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
   let router = Next.Router.useRouter()
   let route = router.route
 
-  let (collapsibles, setCollapsibles) = React.useState(_ => [
-    // {
-    //   title: "Docs",
-    //   href: "/docs/manual/latest/api",
-    //   isActiveRoute: route => {
-    //     let url = Url.parse(route)
-    //     switch url {
-    //     | {base: ["docs"]}
-    //     | {base: ["docs", "react"]}
-    //     | {base: ["docs", "gentype"]}
-    //     | {base: ["docs", "manual"]} =>
-    //       switch Belt.Array.get(url.pagepath, 0) {
-    //       | Some("api") => false
-    //       | _ => true
-    //       }
-    //     | _ => false
-    //     }
-    //   },
-    //   state: Closed,
-    //   children: <DocsSection />,
-    // },
-  ])
+  let (collapsibles, setCollapsibles) = React.useState(_ => [])
 
   let isSubnavOpen = Js.Array2.find(collapsibles, c => c.state !== Closed) !== None
 
@@ -252,12 +203,13 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
       style={ReactDOMStyle.make(~minWidth, ())}
       className={fixedNav ++ " z-50 px-4 flex xs:justify-center w-full h-16 bg-gray-90 shadow text-white-80 text-14"}>
       <div className="flex justify-between items-center h-full w-full max-w-1280">
-        <div className="h-8 w-8 lg:h-10 lg:w-32">
+        <div className="h-8 whitespace-nowrap">
           <a
             href="/"
-            className="block hover:cursor-pointer w-full h-full flex justify-center items-center font-bold">
-            <img src="/static/nav-logo@2x.png" className="lg:hidden" />
-            <img src="/static/nav-logo-full@2x.png" className="hidden lg:block" />
+            className="block hover:cursor-pointer h-full flex items-center font-bold hover:text-fire-30 text-gray-40 w-40 lg:w-50">
+            <img src="/static/nav-logo@2x.png" className="lg:block h-[80%] mr-5" />
+            // <img src="/static/nav-logo-full@2x.png" className="hidden lg:block" />
+            {React.string("rescript-fp-core")}
           </a>
         </div>
         /* Desktop horizontal navigation */
@@ -267,7 +219,7 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
             className="flex ml-10 space-x-5 w-full max-w-320"
             style={ReactDOMStyle.make(~maxWidth="26rem", ())}>
             {collapsibleElements->React.array}
-            <Link href="/docs">
+            <Link href="/docs/installation">
               <a className={linkOrActiveApiSubroute(~route)}> {React.string("Docs")} </a>
             </Link>
           </div>

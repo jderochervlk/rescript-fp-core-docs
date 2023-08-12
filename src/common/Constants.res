@@ -7,7 +7,7 @@ let allManualVersions = [
 let allReactVersions = [("latest", "v0.11.0"), ("v0.10.0", "v0.10.0")]
 
 // Used for the DocsOverview and collapsible navigation
-let languageManual = version => {
+let languageManual = _ => {
   [("Overview", `/docs`)]
 }
 

@@ -6,7 +6,6 @@ import * as Next from "../bindings/Next.mjs";
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Hooks from "../common/Hooks.mjs";
 import * as React from "react";
-import * as DocSearch from "./DocSearch.mjs";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as ReactDOMStyle from "@rescript/react/src/ReactDOMStyle.mjs";
@@ -14,22 +13,6 @@ import * as ReactDOMStyle from "@rescript/react/src/ReactDOMStyle.mjs";
 var link = "no-underline block text-inherit hover:cursor-pointer hover:text-fire-30 text-gray-40 mb-px";
 
 var activeLink = "text-inherit font-medium text-fire-30 border-b border-fire";
-
-function linkOrActiveLink(target, route) {
-  if (target === route) {
-    return activeLink;
-  } else {
-    return link;
-  }
-}
-
-function linkOrActiveLinkSubroute(target, route) {
-  if (route.startsWith(target)) {
-    return activeLink;
-  } else {
-    return link;
-  }
-}
 
 function linkOrActiveApiSubroute(route) {
   var url = Url.parse(route);
@@ -92,39 +75,12 @@ function Navigation$CollapsibleLink(Props) {
 }
 
 function Navigation$MobileNav(Props) {
-  var route = Props.route;
-  var base = "font-normal mx-4 py-5 text-gray-20 border-b border-gray-80";
-  var extLink = "block hover:cursor-pointer hover:text-white text-gray-60";
   return React.createElement("div", {
               className: "border-gray-80 border-t"
             }, React.createElement("ul", undefined, React.createElement("li", {
-                      className: base
-                    }, React.createElement(DocSearch.Textbox.make, {
-                          id: "docsearch-mobile"
-                        })), React.createElement("li", {
-                      className: base
-                    }, React.createElement(Next.Link.make, {
-                          href: "/try",
-                          children: React.createElement("a", {
-                                className: linkOrActiveLink("/try", route)
-                              }, "Playground")
-                        })), React.createElement("li", {
-                      className: base
-                    }, React.createElement(Next.Link.make, {
-                          href: "/blog",
-                          children: React.createElement("a", {
-                                className: linkOrActiveLinkSubroute("/blog", route)
-                              }, "Blog")
-                        })), React.createElement("li", {
-                      className: base
+                      className: "font-normal mx-4 py-5 text-gray-20 border-b border-gray-80"
                     }, React.createElement("a", {
-                          className: extLink,
-                          href: "https://twitter.com/rescriptlang",
-                          rel: "noopener noreferrer"
-                        }, "Twitter")), React.createElement("li", {
-                      className: base
-                    }, React.createElement("a", {
-                          className: extLink,
+                          className: "block hover:cursor-pointer hover:text-white text-gray-60",
                           href: githubHref,
                           rel: "noopener noreferrer"
                         }, "GitHub"))));
@@ -228,17 +184,14 @@ function Navigation(Props) {
                 }, React.createElement("div", {
                       className: "flex justify-between items-center h-full w-full max-w-1280"
                     }, React.createElement("div", {
-                          className: "h-8 w-8 lg:h-10 lg:w-32"
+                          className: "h-8 whitespace-nowrap"
                         }, React.createElement("a", {
-                              className: "block hover:cursor-pointer w-full h-full flex justify-center items-center font-bold",
+                              className: "block hover:cursor-pointer h-full flex items-center font-bold hover:text-fire-30 text-gray-40 w-40 lg:w-50",
                               href: "/"
                             }, React.createElement("img", {
-                                  className: "lg:hidden",
+                                  className: "lg:block h-[80%] mr-5",
                                   src: "/static/nav-logo@2x.png"
-                                }), React.createElement("img", {
-                                  className: "hidden lg:block",
-                                  src: "/static/nav-logo-full@2x.png"
-                                }))), React.createElement("div", {
+                                }), "rescript-fp-core")), React.createElement("div", {
                           className: "flex items-center xs:justify-between w-full bg-gray-90 sm:h-auto sm:relative"
                         }, React.createElement("div", {
                               className: "flex ml-10 space-x-5 w-full max-w-320",
@@ -246,7 +199,7 @@ function Navigation(Props) {
                                 maxWidth: "26rem"
                               }
                             }, collapsibleElements, React.createElement(Next.Link.make, {
-                                  href: "/docs",
+                                  href: "/docs/installation",
                                   children: React.createElement("a", {
                                         className: linkOrActiveApiSubroute(route)
                                       }, "Docs")

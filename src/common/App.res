@@ -37,8 +37,8 @@ type pageProps = {.}
 
 type props = {"Component": pageComponent, "pageProps": pageProps}
 
-@get
-external frontmatter: React.component<{.}> => Js.Json.t = "frontmatter"
+// @get
+// external frontmatter: React.component<{.}> => Js.Json.t = "frontmatter"
 
 let make = (props: props): React.element => {
   let component = props["Component"]

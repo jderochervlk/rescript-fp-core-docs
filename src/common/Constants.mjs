@@ -27,7 +27,7 @@ var allReactVersions = [
   ]
 ];
 
-function languageManual(version) {
+function languageManual(param) {
   return [[
             "Overview",
             "/docs"
