@@ -6,6 +6,19 @@ canonical: "/docs/installation"
 
 # Installation
 
+Install the package.
+
 ```sh
 npm i rescript-fp-core
+```
+Update your projects `bsconfig.json` file.
+```json
+{
+    "bs-dependencies": [
+        "rescript-fp-core"
+    ],
+    "bs-flags": [
+       "-open FpCore" 
+    ]
+}
 ```

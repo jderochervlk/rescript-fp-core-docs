@@ -6,7 +6,7 @@
   "version": "1.0.0",
   "author": "Josh Vlk <josh@vlkpack.com>",
   "license": "MIT",
-    "keywords": [],
+  "keywords": [],
   "scripts": {
     "res:build": "rescript",
     "res:dev": "rescript build -w",
@@ -36,7 +36,6 @@
     "next": "10.2.3",
     "next-transpile-modules": "7.1.2",
     "postcss": "^8.3.0",
-    "prettier": "^1.18.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "remark-parse": "^7.0.1",
@@ -45,6 +44,12 @@
     "request": "^2.88.0",
     "stringify-object": "^3.3.0",
     "unified": "^8.4.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.15",
+    "esbuild-loader": "^4.0.2",
+    "prettier": "^3.0.3",
+    "rescript": "^10.1.4",
+    "tailwindcss": "^3.3.3"
   }
-
 }
