@@ -236,7 +236,7 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
       </div>
       /* Burger Button */
       <button
-        id="toggle navigation overlay"
+        ariaLabel="toggle navigation overlay"
         className="h-full px-4 xs:hidden flex items-center hover:text-white"
         onClick={evt => {
           ReactEvent.Mouse.preventDefault(evt)

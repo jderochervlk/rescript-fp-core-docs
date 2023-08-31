@@ -214,8 +214,8 @@ function Navigation(Props) {
                                 }, React.createElement(Icon.GitHub.make, {
                                       className: "w-6 h-6 opacity-50 hover:opacity-100"
                                     }))))), React.createElement("button", {
+                      "aria-label": "toggle navigation overlay",
                       className: "h-full px-4 xs:hidden flex items-center hover:text-white",
-                      id: "toggle navigation overlay",
                       onClick: (function (evt) {
                           evt.preventDefault();
                           resetCollapsibles(undefined);
