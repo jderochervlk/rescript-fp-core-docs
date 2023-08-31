@@ -1,0 +1,11 @@
+<CodeTab labels={["ReScript", "JS Output"]}>
+
+```res example
+@val external setTimeout: (unit => unit, int) => float = "setTimeout"
+@val external clearTimeout: float => unit = "clearTimeout"
+```
+```js
+// Empty output
+```
+
+</CodeTab>

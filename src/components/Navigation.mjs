@@ -10,9 +10,9 @@ import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as ReactDOMStyle from "@rescript/react/src/ReactDOMStyle.mjs";
 
-var link = "no-underline block text-inherit hover:cursor-pointer hover:text-fire-30 text-gray-40 mb-px";
+var link = "no-underline block hover:cursor-pointer hover:text-fire-30 text-gray-40 mb-px";
 
-var activeLink = "text-inherit font-medium text-fire-30 border-b border-fire";
+var activeLink = "font-medium text-fire-30 border-b border-fire";
 
 function linkOrActiveApiSubroute(route) {
   var url = Url.parse(route);

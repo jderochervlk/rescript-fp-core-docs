@@ -40,7 +40,7 @@ let make = (~components=Markdown.default, ~children) => {
 
   <>
     <Meta
-      title="The ReScript Programming Language"
+      title="Rescript FP Core"
       description="Fast, Simple, Fully Typed JavaScript from the Future"
       keywords=["ReScript", "rescriptlang", "JavaScript", "JS", "TypeScript"]
       ogImage="/static/Art-3-rescript-launch.jpg"

@@ -57,10 +57,13 @@ function LandingPageLayout(Props) {
                     "rescriptlang",
                     "JavaScript",
                     "JS",
-                    "TypeScript"
+                    "TypeScript",
+                    "funtional programming",
+                    "fp",
+                    "core"
                   ],
-                  description: "Fast, Simple, Fully Typed JavaScript from the Future",
-                  title: "The ReScript Programming Language",
+                  description: "Rescript FP Core",
+                  title: "Rescript FP Core",
                   ogImage: "/static/Art-3-rescript-launch.jpg"
                 }), React.createElement("div", {
                   className: "mt-4 xs:mt-16"
