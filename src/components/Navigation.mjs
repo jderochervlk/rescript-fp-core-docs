@@ -190,6 +190,8 @@ function Navigation(Props) {
                               href: "/"
                             }, React.createElement("img", {
                                   className: "lg:block h-[80%] mr-5",
+                                  role: "presentation",
+                                  alt: "",
                                   src: "/static/nav-logo@2x.png"
                                 }), "rescript-fp-core")), React.createElement("div", {
                           className: "flex items-center xs:justify-between w-full bg-gray-90 sm:h-auto sm:relative"
@@ -213,6 +215,7 @@ function Navigation(Props) {
                                       className: "w-6 h-6 opacity-50 hover:opacity-100"
                                     }))))), React.createElement("button", {
                       className: "h-full px-4 xs:hidden flex items-center hover:text-white",
+                      id: "toggle navigation overlay",
                       onClick: (function (evt) {
                           evt.preventDefault();
                           resetCollapsibles(undefined);

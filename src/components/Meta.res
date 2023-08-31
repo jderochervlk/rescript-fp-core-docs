@@ -37,7 +37,7 @@ let make = (
     <meta charSet="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, minimal-ui"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, minimal-ui"
     />
     <meta key="description" name="description" content=description />
     <meta key="keywords" name="keywords" content={Js.Array2.joinWith(keywords, ",")} />

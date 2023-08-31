@@ -202,7 +202,12 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
           <a
             href="/"
             className="block hover:cursor-pointer h-full flex items-center font-bold hover:text-fire-30 text-gray-40 w-40 lg:w-50">
-            <img src="/static/nav-logo@2x.png" className="lg:block h-[80%] mr-5" />
+            <img
+              src="/static/nav-logo@2x.png"
+              className="lg:block h-[80%] mr-5"
+              role="presentation"
+              alt=""
+            />
             // <img src="/static/nav-logo-full@2x.png" className="hidden lg:block" />
             {React.string("rescript-fp-core")}
           </a>
@@ -231,6 +236,7 @@ let make = (~fixed=true, ~overlayState: (bool, (bool => bool) => unit)) => {
       </div>
       /* Burger Button */
       <button
+        id="toggle navigation overlay"
         className="h-full px-4 xs:hidden flex items-center hover:text-white"
         onClick={evt => {
           ReactEvent.Mouse.preventDefault(evt)

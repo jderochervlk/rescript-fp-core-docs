@@ -5,7 +5,7 @@ export default class extends Document {
   render() {
     const isProduction = process.env.ENV === "production";
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <link
             rel="stylesheet"
