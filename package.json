@@ -6,6 +6,16 @@
   "version": "1.0.0",
   "author": "Josh Vlk <josh@vlkpack.com>",
   "license": "MIT",
+    "keywords": [],
+  "scripts": {
+    "res:build": "rescript",
+    "res:dev": "rescript build -w",
+    "dev": "next",
+    "build": "rescript clean -with-deps && rescript && npm run update-index && next build",
+    "test": "node scripts/test-examples.mjs && node scripts/test-hrefs.mjs",
+    "reanalyze": "reanalyze -all-cmt .",
+    "update-index": "node scripts/extract-indices.mjs && node scripts/extract-tocs.mjs && node scripts/extract-syntax.mjs"
+  },
   "engines": {
     "node": "16.x"
   },
@@ -35,10 +45,6 @@
     "request": "^2.88.0",
     "stringify-object": "^3.3.0",
     "unified": "^8.4.0"
-  },
-  "scripts": {
-    "res:build": "rescript",
-    "res:dev": "rescript build -w"
-  },
-  "keywords": []
+  }
+
 }
