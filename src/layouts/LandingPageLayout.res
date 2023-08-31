@@ -3,7 +3,7 @@ let text = [
   `ReScript Core has a focus of providing bindings for JavaScript API's without having an opinion on those APIs.
   This library has a different philosophy of providing functions that are focused on functional patterns, 
   and only offering a subset of Javascript APIs.`,
-  `This library encorages immutable data and safe access that are often wrapped in Options.`,
+  `This library encourages immutable data and safe access that are often wrapped in Options.`,
 ]
 
 module Intro = {

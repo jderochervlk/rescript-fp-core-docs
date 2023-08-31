@@ -12,7 +12,7 @@ import * as Caml_option from "rescript/lib/es6/caml_option.js";
 var text = [
   "An alternative to the ReScript Core library heavily inspired by fp-ts.",
   "ReScript Core has a focus of providing bindings for JavaScript API's without having an opinion on those APIs.\n  This library has a different philosophy of providing functions that are focused on functional patterns, \n  and only offering a subset of Javascript APIs.",
-  "This library encorages immutable data and safe access that are often wrapped in Options."
+  "This library encourages immutable data and safe access that are often wrapped in Options."
 ];
 
 function LandingPageLayout$Intro(Props) {
@@ -57,12 +57,9 @@ function LandingPageLayout(Props) {
                     "rescriptlang",
                     "JavaScript",
                     "JS",
-                    "TypeScript",
-                    "funtional programming",
-                    "fp",
-                    "core"
+                    "TypeScript"
                   ],
-                  description: "Rescript FP Core",
+                  description: "Fast, Simple, Fully Typed JavaScript from the Future",
                   title: "Rescript FP Core",
                   ogImage: "/static/Art-3-rescript-launch.jpg"
                 }), React.createElement("div", {
