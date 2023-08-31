@@ -2,22 +2,7 @@
   "Overview": [
     "installation"
   ],
-  "Language Features": [
-    
-  ],
-  "Advanced Features": [
-
-  ],
-  "JavaScript Interop": [
-  
-  ],
-  "Build System": [
-   
-  ],
-  "Guides": [
-   
-  ],
-  "Extra": [
-
+  "Modules": [
+    "array"
   ]
 }
