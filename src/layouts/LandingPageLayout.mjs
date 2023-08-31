@@ -10,37 +10,38 @@ import * as Navigation from "../components/Navigation.mjs";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 
 var text = [
-  "\n  Heavily inspired by fp-ts this library is an alternative to the ReScript Core library.\n  ReScript Core has a focus of providing bindings for JavaScript API's without having an opinion on those APIs.\n  This library has a different philosophy of providing functions that are focused on functional patterns, \n  and only offering a subset of Javascript APIs.\n  ",
-  "\n  This library encorages immutable data and safe access that are often wrapped in Options.\n  "
+  "An alternative to the ReScript Core library heavily inspired by fp-ts.",
+  "ReScript Core has a focus of providing bindings for JavaScript API's without having an opinion on those APIs.\n  This library has a different philosophy of providing functions that are focused on functional patterns, \n  and only offering a subset of Javascript APIs.",
+  "This library encorages immutable data and safe access that are often wrapped in Options."
 ];
 
 function LandingPageLayout$Intro(Props) {
   return React.createElement(React.Fragment, {
-              children: null
-            }, React.createElement("section", {
-                  className: "flex justify-center"
-                }, React.createElement("div", {
-                      className: "max-w-1060 flex flex-col items-center px-5 sm:px-8 lg:box-content"
-                    }, React.createElement("h1", {
-                          className: "hl-title text-center max-w-[53rem]"
-                        }, "rescript-fp-core"), React.createElement("h2", {
-                          className: "body-lg text-center text-gray-60 my-4 max-w-[40rem]"
-                        }, "A functional standard library for ReScript."), React.createElement("div", {
-                          className: "mt-4 mb-2"
-                        }, React.createElement(Next.Link.make, {
-                              href: "/docs/manual/installation",
-                              passHref: true,
-                              children: React.createElement(Button.make, {
-                                    children: "Get started"
-                                  })
-                            })))), React.createElement("section", {
-                  className: "container mx-auto mt-10 max-w-800"
-                }, text.map(function (t) {
-                      return React.createElement("p", {
-                                  key: t,
-                                  className: "mt-1"
-                                }, t);
-                    })));
+              children: React.createElement("section", {
+                    className: "flex justify-center"
+                  }, React.createElement("div", {
+                        className: "max-w-1060 flex flex-col items-center px-5 sm:px-8 lg:box-content"
+                      }, React.createElement("h1", {
+                            className: "hl-title text-center max-w-[53rem]"
+                          }, "rescript-fp-core"), React.createElement("h2", {
+                            className: "body-lg text-center text-gray-60 my-4 max-w-[40rem]"
+                          }, "A functional standard library for ReScript."), React.createElement("div", {
+                            className: "body-lg text-center text-gray-60 max-w-[40rem]"
+                          }, text.map(function (t) {
+                                return React.createElement("p", {
+                                            key: t,
+                                            className: "my-4"
+                                          }, t);
+                              })), React.createElement("div", {
+                            className: "mt-4 mb-2"
+                          }, React.createElement(Next.Link.make, {
+                                href: "/docs/installation",
+                                passHref: true,
+                                children: React.createElement(Button.make, {
+                                      children: "Get started"
+                                    })
+                              }))))
+            });
 }
 
 function LandingPageLayout(Props) {

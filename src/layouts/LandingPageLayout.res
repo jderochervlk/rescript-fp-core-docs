@@ -1,13 +1,9 @@
 let text = [
-  `
-  Heavily inspired by fp-ts this library is an alternative to the ReScript Core library.
-  ReScript Core has a focus of providing bindings for JavaScript API's without having an opinion on those APIs.
+  `An alternative to the ReScript Core library heavily inspired by fp-ts.`,
+  `ReScript Core has a focus of providing bindings for JavaScript API's without having an opinion on those APIs.
   This library has a different philosophy of providing functions that are focused on functional patterns, 
-  and only offering a subset of Javascript APIs.
-  `,
-  `
-  This library encorages immutable data and safe access that are often wrapped in Options.
-  `,
+  and only offering a subset of Javascript APIs.`,
+  `This library encorages immutable data and safe access that are often wrapped in Options.`,
 ]
 
 module Intro = {
@@ -22,15 +18,17 @@ module Intro = {
           <h2 className="body-lg text-center text-gray-60 my-4 max-w-[40rem]">
             {React.string(`A functional standard library for ReScript.`)}
           </h2>
+          <div className="body-lg text-center text-gray-60 max-w-[40rem]">
+            {text
+            ->Js.Array2.map(t => <p key={t} className="my-4"> {React.string(t)} </p>)
+            ->React.array}
+          </div>
           <div className="mt-4 mb-2">
-            <Next.Link href="/docs/manual/installation" passHref={true}>
+            <Next.Link href="/docs/installation" passHref={true}>
               <Button> {React.string("Get started")} </Button>
             </Next.Link>
           </div>
         </div>
-      </section>
-      <section className="container mx-auto mt-10 max-w-800">
-        {text->Js.Array2.map(t => <p key={t} className="mt-1"> {React.string(t)} </p>)->React.array}
       </section>
     </React.Fragment>
   }
