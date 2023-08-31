@@ -12,6 +12,7 @@ export default class extends Document {
             href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"
           />
           <script
+            defer
             type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"
           />
