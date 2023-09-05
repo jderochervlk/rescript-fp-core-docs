@@ -9,11 +9,7 @@ import * as Markdown from "../components/Markdown.mjs";
 import * as Navigation from "../components/Navigation.mjs";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 
-var text = [
-  "An alternative to the ReScript Core library heavily inspired by fp-ts.",
-  "ReScript Core has a focus of providing bindings for JavaScript API's without having an opinion on those APIs.\n  This library has a different philosophy of providing functions that are focused on functional patterns, \n  and only offering a subset of Javascript APIs.",
-  "This library encourages immutable data and safe access that are often wrapped in Options."
-];
+var text = ["An alternative to the ReScript Core library heavily inspired by fp-ts."];
 
 function LandingPageLayout$Intro(Props) {
   return React.createElement(React.Fragment, {
@@ -35,7 +31,7 @@ function LandingPageLayout$Intro(Props) {
                               })), React.createElement("div", {
                             className: "mt-4 mb-2"
                           }, React.createElement(Next.Link.make, {
-                                href: "/docs/installation",
+                                href: "/docs/about",
                                 passHref: true,
                                 children: React.createElement(Button.make, {
                                       children: "Get started"

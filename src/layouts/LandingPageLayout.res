@@ -1,10 +1,4 @@
-let text = [
-  `An alternative to the ReScript Core library heavily inspired by fp-ts.`,
-  `ReScript Core has a focus of providing bindings for JavaScript API's without having an opinion on those APIs.
-  This library has a different philosophy of providing functions that are focused on functional patterns, 
-  and only offering a subset of Javascript APIs.`,
-  `This library encourages immutable data and safe access that are often wrapped in Options.`,
-]
+let text = [`An alternative to the ReScript Core library heavily inspired by fp-ts.`]
 
 module Intro = {
   @react.component
@@ -24,7 +18,7 @@ module Intro = {
             ->React.array}
           </div>
           <div className="mt-4 mb-2">
-            <Next.Link href="/docs/installation" passHref={true}>
+            <Next.Link href="/docs/about" passHref={true}>
               <Button> {React.string("Get started")} </Button>
             </Next.Link>
           </div>
