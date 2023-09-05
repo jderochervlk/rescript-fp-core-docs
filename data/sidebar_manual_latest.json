@@ -3,6 +3,7 @@
     "installation"
   ],
   "Modules": [
-    "array"
+    "array",
+    "option"
   ]
 }

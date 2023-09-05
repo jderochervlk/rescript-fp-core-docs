@@ -1,0 +1,144 @@
+---
+title: "Option"
+description: "Option"
+canonical: "/docs/modules/option"
+---
+
+# Option
+
+## catchMap
+Takes a function that returns an `option`. It returns the output of the function if source `option` is `None`.
+
+### Example
+```rescript
+Some(42)->Option.catchMap(() => 100) // => Some(42)
+None->Option.catchMap(() => 100) //=> Some(100)
+```
+
+## chain
+Takes a function `'a => option<'b>` and applies that function to the value inside the option and returns another option.
+
+### Example
+```rescript
+Some(42)->Option.chain(t => t < 100 ? Some(t) : None) // => Some(42)
+Some(400)->Option.chain(t => t < 100 ? Some(t) : None) // => None
+None->Option.chain(t => t < 100 ? Some(t) : None) // => None
+```
+
+## filter
+Convert to `None` if predicate function return falsy value, otherwise return the same `Just`.
+
+### Example
+```rescript
+Some(42)->Option.filter(n => n == 42) // => Some(42)
+Some(42)->Option.filter(n => n != 42) // => None
+None->Option.filter(n => n != 42) // => None
+```
+
+## fold
+Takes a (lazy) default value, a function, and an Option value, if the Option value is None the default value is returned, otherwise the function is applied to the value inside the Some and the result is returned.
+
+### Example
+```rescript
+Some(42)->Option.fold(() => "no number", t => "the number is " ++ t->Js.Int.toString) // => "the number is 42"
+```
+
+## forEach
+Invoke a function applying a side-effect on the contents of the option if any.
+
+### Example
+```rescript
+Some(42)->Option.forEach(Js.Console.log) // => logs 42 to the console
+```
+
+## getOrElse
+Extracts the value out of the structure, if it exists. Otherwise returns the given default value.
+
+### Example
+```rescript
+Some(42)->Option.getOrElse(() => 100) // => 42
+None->Option.getOrElse(() => 100) // => 100
+```
+
+## isNone
+Returns true if the option is None, false otherwise.
+
+### Example
+```rescript
+Some(42)->Option.isNone // => false
+None->Option.isNone // => true
+```
+
+## isSome
+Returns true if the option is Some, false otherwise.
+
+### Example
+```rescript
+Some(42)->Option.isNone // => false
+None->Option.isNone // => true
+```
+
+## liftA1
+converts a function `('a) => 'b` to `(option<'a>) => option<'b>`
+
+### Example
+```rescript
+let increment = n => n + 1
+let liftedIncrement = Option.liftA1(increment)
+Some(42)->liftedIncrement // => Some(43)
+```
+
+## liftA2
+converts a function `('a, 'b) => 'c` to `(option<'a>, option<'b>) => option<'c>`
+
+### Example
+```rescript
+let sum = (n1, n2) => n1 + n2
+let liftedSum = Option.liftA2(sum)
+liftedSum(Some(100), Some(42)) // => Some(142)
+```
+
+## liftA3
+converts a function `('a) => 'b` to `(option<'a>) => option<'b>`
+
+### Example
+```rescript
+let sum = (n1, n2, n3) => n1 + n2 + n3
+let liftedSum = Option.liftA3(sum)
+liftedSum(Some(100), Some(42), Some(100)) // => Some(242)
+```
+
+## map
+Takes a function `'a => 'b` and applies that function to the value inside the option and returns another option.
+
+### Example
+```rescript
+Some(42)->Option.map(n => n + 10) // => Some(52)
+None->Option.map(n => n + 10) // => None
+```
+
+## map2
+Takes a function `('a, 'b) => 'c` and applies that function to the values inside the options and returns another option.
+
+### Example
+```rescript
+let sum = (n1, n2) => n1 + n2
+Some(42)->Option.map2(Some(100), sum) // => Some(142)
+```
+
+## map3
+Takes a function `('a, 'b, 'c) => 'd` and applies that function to the values inside the options and returns another option.
+
+### Example
+```rescript
+let sum = (n1, n2, n3) => n1 + n2 + n3
+Some(42)->Option.map3(Some(100), Some(100), sum) // => Some(242)
+```
+
+## orElseRun
+Invoke a parameterless side-effecting function if the option is None.
+
+### Example
+```rescript
+None->Option.orElseRun(() => Js.Console.log(42)) // => logs 42 to the console
+```
