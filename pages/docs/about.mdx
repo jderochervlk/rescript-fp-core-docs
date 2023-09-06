@@ -7,12 +7,41 @@ canonical: "/docs/overview/about"
 # Overview
 `rescript-fp-core` is an alternative to [rescript-core](https://github.com/rescript-association/rescript-core).
 
-`rescript-core` has [guiding principals](https://github.com/rescript-association/rescript-core#guiding-principles) to make it align with the JS apis as much as possible.
+`rescript-core` has [guiding principals](https://github.com/rescript-association/rescript-core#guiding-principles) to make it align with JS apis as much as possible.
 This makes it easy to pick up and use if you already know JavaScript and you want to continue to write code in a similar way.
 
-`rescript-fp-core` has a different focus of embracing functional programming and not allowing all of the JS apis to be used,
-such as mutating arrays. This has means that there is more of a runtime cost to using this library over core, but I try to create zero-cost bindings when I can.
+`rescript-fp-core` has a different focus of embracing functional programming and only using safe JS apis that do not mutate data or cause side-effects.
+This means there is more of a runtime cost using this library over core, but it does try to use zero-cost bindings as much as possible.
+
+## Inspiration
+`rescript-fp-core` is heavily inspired by [fp-ts](https://gcanti.github.io/fp-ts/). 
+It also draws inspiration from [monet.js](https://monet.github.io/monet.js/), [Crocks](https://crocks.dev/docs/getting-started.html), and [F#](https://fsharp.org/).
 
 ## Core modules
-Not all modules have been created from scratch and when it makes sense the modules from `rescript-core` are used here.
-Huge thanks to all of the effort done on that library.
+This library is built on top of `rescript-core` and exposes most of its modules.
+
+The following modules are directly from `rescript-core`. 
+Please refer to those docs when using these modules.
+
+- BigInt
+- Console
+- Dict
+- Error
+- Float
+- Int
+- Intl
+- Iterator
+- JSON
+- List
+- Map
+- Math
+- Ordering
+- Promise
+- RegExp
+- Set
+- String
+- Symbol
+- Type
+- WeakMap
+- WeakSet
+
