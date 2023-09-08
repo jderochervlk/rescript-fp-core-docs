@@ -116,6 +116,14 @@ Takes an array of arrays of `'a` and flattens them into an array of `'a` by conc
 [[1, 2], [3, 4], [5, 6]]->Array.flatten // => [1, 2, 3, 4, 5, 6]
 ```
 
+## forEach
+Executes a provided function once for each array element. 
+
+### Example
+```rescript
+[1, 2, 3]->Array.forEach(Console.log) // logs 1,2,3 to the console
+```
+
 ## get
 Gets the value from the given index, or `None` if the index is out of bounds.
 

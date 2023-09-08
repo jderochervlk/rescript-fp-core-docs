@@ -5,6 +5,7 @@
   ],
   "Modules": [
     "array",
+    "object",
     "option"
   ]
 }
